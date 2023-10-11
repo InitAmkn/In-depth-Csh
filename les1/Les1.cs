@@ -6,9 +6,6 @@ using System.Threading.Tasks;
 
 namespace les1
 {
-    internal class Les1
-    {
-    }
     internal class Task1
     {
         //Спроектируйте программу для построения генеалогического дерева.
@@ -37,16 +34,16 @@ namespace les1
             return (ParentOne, ParentTwo);
         }
 
-        private List<Person> GetSiblings()
+        public List<Person> GetSiblings()
         {
             List<Person> listSiblings = new List<Person>();
-            listSiblings.AddRange(GetSiblingsByOneParents(ParentOne));
-            listSiblings.AddRange(GetSiblingsByOneParents(ParentTwo));
+            listSiblings.AddRange(GetSiblingsByOneParent(ParentOne));
+            listSiblings.AddRange(GetSiblingsByOneParent(ParentTwo));
 
             return listSiblings;
         }
 
-            private List<Person> GetSiblingsByOneParents(Person Parent)
+        private List<Person> GetSiblingsByOneParent(Person Parent)
         {
             List<Person> listSiblings = new List<Person>();
             if (Parent is PersonWithChildren)
@@ -54,7 +51,7 @@ namespace les1
                 foreach (var item in ((PersonWithChildren)Parent).GetChildren())
                 {
                     if(this != item)
-                     listSiblings.Add(item);
+                        listSiblings.Add(item);
                 }    
             }
             return listSiblings;
