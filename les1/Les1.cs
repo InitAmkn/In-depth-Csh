@@ -8,12 +8,13 @@ namespace les1
 {
     internal class Task1
     {
+        //1
         //Спроектируйте программу для построения генеалогического дерева.
         //Учтите что у нас есть члены семьи у кого нет детей(дет). 
         //Есть члены семьи у кого дети есть (взрослые). Есть мужчины и женщины.
 
 
-
+        //2
         //Доработать предыдущий класс реализовав методы вывода родителей, детей,
         //братьев/сестер (включая двоюродных), бабушеки дедушек.
         //Подумайте как лучше реализовать данные методы.
@@ -26,19 +27,22 @@ namespace les1
         public required string Name { get; set; }
         public int Age { get; set; }
         public Gender Gender { get; set; }
-        public required Person ParentOne {  get; set; }
-        public required Person ParentTwo { get; set; }
+        public Person? ParentOne {  get; set; }
+        public Person? ParentTwo { get; set; }
 
-        public (Person,Person) GetParent()
-        { 
-            return (ParentOne, ParentTwo);
+        public List<Person> GetParents()
+        {
+            List<Person> parents = new List<Person>();
+            if (ParentOne!=null)parents.Add(ParentOne);
+            if (ParentTwo!= null)parents.Add(ParentTwo);
+            return parents;
         }
 
         public List<Person> GetSiblings()
         {
             List<Person> listSiblings = new List<Person>();
-            listSiblings.AddRange(GetSiblingsByOneParent(ParentOne));
-            listSiblings.AddRange(GetSiblingsByOneParent(ParentTwo));
+            if (ParentOne != null) listSiblings.AddRange(GetSiblingsByOneParent(ParentOne));
+            if (ParentTwo != null) listSiblings.AddRange(GetSiblingsByOneParent(ParentTwo));
 
             return listSiblings;
         }
@@ -57,16 +61,26 @@ namespace les1
             return listSiblings;
         }
 
+        public List<Person> GetGrandParents()
+        {
+            List<Person> listGrandParents = new List<Person>();
+
+            if (ParentOne != null) listGrandParents.AddRange(ParentOne.GetParents());
+            if (ParentTwo != null) listGrandParents.AddRange(ParentTwo.GetParents());
+            return listGrandParents;
+
+        }
 
     }
+
+  
 
     public class PersonWithChildren : Person 
     { 
         public required Person[] Children { get; set; }
 
-        public Person[]GetChildren()
+        public Person[] GetChildren()
         {
-
             return Children;
         }
     }
