@@ -1,25 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace les1
 {
-    internal class Task1
-    {
-        //1
-        //Спроектируйте программу для построения генеалогического дерева.
-        //Учтите что у нас есть члены семьи у кого нет детей(дет). 
-        //Есть члены семьи у кого дети есть (взрослые). Есть мужчины и женщины.
-
-
-        //2
-        //Доработать предыдущий класс реализовав методы вывода родителей, детей,
-        //братьев/сестер (включая двоюродных), бабушеки дедушек.
-        //Подумайте как лучше реализовать данные методы.
-
-    }
 
     public class Person
     {
@@ -30,11 +12,45 @@ namespace les1
         public Person? ParentOne {  get; set; }
         public Person? ParentTwo { get; set; }
 
+
+        public List<List<Person>> GetAllDescendants()
+        {
+            var generations = new List<List<Person>>();
+            generations.Add(new List<Person>{ this });
+            int i = 0;
+            while (IsGenerationHaveChildren(generations[i]))
+                {
+                var generation = new List<Person>();
+                    foreach (var person in generations[i])
+                    {
+                        if (person is PersonWithChildren)
+                        {
+                            generation.AddRange(((PersonWithChildren)person).Children);
+                        }
+                    }
+                     generations.Add(generation);
+                 i++;
+                }
+            return generations;
+        }
+        private bool IsGenerationHaveChildren(List<Person> Generation)
+        {
+            foreach (var item in Generation)
+            {
+                if (item is PersonWithChildren)
+                {
+                    return true;
+
+                }
+            }
+            return false;
+        }
+
         public List<Person> GetParents()
         {
             List<Person> parents = new List<Person>();
-            if (ParentOne!=null)parents.Add(ParentOne);
-            if (ParentTwo!= null)parents.Add(ParentTwo);
+            if (ParentOne!= null) parents.Add(ParentOne);
+            if (ParentTwo!= null) parents.Add(ParentTwo);
             return parents;
         }
 
@@ -52,7 +68,8 @@ namespace les1
             List<Person> listSiblings = new List<Person>();
             if (Parent is PersonWithChildren)
             {
-                foreach (var item in ((PersonWithChildren)Parent).GetChildren())
+
+                foreach (var item in ((PersonWithChildren)Parent).Children)
                 {
                     if(this != item)
                         listSiblings.Add(item);
@@ -68,26 +85,12 @@ namespace les1
             if (ParentOne != null) listGrandParents.AddRange(ParentOne.GetParents());
             if (ParentTwo != null) listGrandParents.AddRange(ParentTwo.GetParents());
             return listGrandParents;
-
         }
 
-    }
-
-  
-
-    public class PersonWithChildren : Person 
-    { 
-        public required Person[] Children { get; set; }
-
-        public Person[] GetChildren()
+        public override string ToString()
         {
-            return Children;
+            return $"Name: {Name}; Age: {Age}; Gender {Gender}";
         }
-    }
-    public enum Gender
-    {
-        Male,
-        Female
     }
    
 }
