@@ -45,11 +45,7 @@ class Program
 
         foreach (var descendant in person4.GetAllDescendants())
         {
-            foreach (var person in descendant)
-            {
-                Console.WriteLine(person);
-            }
-            Console.WriteLine();
+                Console.WriteLine(descendant);
         }
 
 

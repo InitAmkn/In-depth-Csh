@@ -1,5 +1,7 @@
 ﻿
 
+using System;
+
 namespace les1
 {
 
@@ -13,34 +15,26 @@ namespace les1
         public Person? ParentTwo { get; set; }
 
 
-        public List<List<Person>> GetAllDescendants()
+        public Person[] GetAllDescendants()
         {
             var generations = new List<Person>() { this };
-            var nextGeneration = new List<Person>();
-            if (this is PersonWithChildren)
-            {
-                nextGeneration.AddRange(((PersonWithChildren)this).Children);
-            }
-            else
-            {
-                return generations;
-            }
-
+         
             int i = 0;
-            while (IsGenerationHaveChildren(generations[i]))
+
+            while (i < generations.Count)
+            { 
+                if (generations[i] is PersonWithChildren)
                 {
-                var generation = new List<Person>();
-                    foreach (var person in generations[i])
+                   var nextGeneration = ((PersonWithChildren)generations[i]).Children;
+                    foreach (var item in nextGeneration)
                     {
-                        if (person is PersonWithChildren)
-                        {
-                            generation.AddRange(((PersonWithChildren)person).Children);
-                        }
+                        if (!generations.Contains(item))
+                        generations.Add(item);
                     }
-                     generations.Add(generation);
-                 i++;
                 }
-            return generations;
+                i++;
+             }
+            return generations.ToArray()[1..];
         }
         private bool IsGenerationHaveChildren(List<Person> Generation)
         {
