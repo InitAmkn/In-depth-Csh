@@ -15,8 +15,17 @@ namespace les1
 
         public List<List<Person>> GetAllDescendants()
         {
-            var generations = new List<List<Person>>();
-            generations.Add(new List<Person>{ this });
+            var generations = new List<Person>() { this };
+            var nextGeneration = new List<Person>();
+            if (this is PersonWithChildren)
+            {
+                nextGeneration.AddRange(((PersonWithChildren)this).Children);
+            }
+            else
+            {
+                return generations;
+            }
+
             int i = 0;
             while (IsGenerationHaveChildren(generations[i]))
                 {
