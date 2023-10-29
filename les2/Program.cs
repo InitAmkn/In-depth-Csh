@@ -4,7 +4,11 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            int b = 7;
+            Bits v = b;
+
+
+            Console.WriteLine(v);
         }
     }
 }

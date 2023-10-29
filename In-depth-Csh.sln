@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les1", "les1\les1.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les2", "les2\les2.csproj", "{88E2351F-A2FF-4178-B755-6A1598F62903}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "les3", "les3\les3.csproj", "{51B084A8-3788-4E64-975A-6BB30910B59D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les3", "les3\les3.csproj", "{51B084A8-3788-4E64-975A-6BB30910B59D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
