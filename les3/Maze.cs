@@ -14,28 +14,23 @@
     Напишите алгоритм определяющий наличие выхода из 
     лабиринта и выводящий на экран  координаты точки выхода если таковые имеются.
     */
+    private int[,] maze;
 
-    int[,] l = new int[,]
+    public Maze(int[,] maze)
     {
-        {1, 1, 1, 1, 1, 1, 1 },
-        {1, 0, 0, 0, 0, 0, 1 },
-        {1, 0, 1, 1, 1, 0, 1 },
-        {0, 0, 0, 0, 1, 0, 2 },
-        {1, 1, 0, 0, 1, 1, 1 },
-        {1, 1, 1, 1, 1, 1, 1 },
-        {1, 1, 1, 1, 1, 1, 1 }
-    };
+        this.maze = maze;
+    }
 
     public bool HasExit(int startI, int startJ)
     {
-        if (l[startI, startJ] == 1)
+        if (maze[startI, startJ] == 1)
         {
             Console.WriteLine("Начальная точка находится в стене!");
             return false;
         }
-        else if (l[startI, startJ] == 2)
+        else if (maze[startI, startJ] == 2)
         {
-            Console.WriteLine("Выход ниходится на входе 0_о!");
+            Console.WriteLine("Выход находится на входе");
             return true;
         }
 
@@ -46,24 +41,24 @@
         {
             var temp = stack.Pop();
 
-            if (l[temp.Item1, temp.Item2] == 2)
+            if (maze[temp.Item1, temp.Item2] == 2)
             {
                 Console.WriteLine("Выход найден!");
                 return true;
             }
 
-            l[temp.Item1, temp.Item2] = 1;
+            maze[temp.Item1, temp.Item2] = 1;
 
-            if (temp.Item2 >= 0 && l[temp.Item1, temp.Item2 - 1] != 1)
+            if (temp.Item2 > 0 && maze[temp.Item1, temp.Item2 - 1] != 1)
                 stack.Push(new(temp.Item1, temp.Item2 - 1)); // вверх
 
-            if (temp.Item2 + 1 < l.GetLength(1) && l[temp.Item1, temp.Item2 + 1] != 1)
+            if (temp.Item2 + 1 < maze.GetLength(1) && maze[temp.Item1, temp.Item2 + 1] != 1)
                 stack.Push(new(temp.Item1, temp.Item2 + 1)); // низ
 
-            if (temp.Item1 >= 0 && l[temp.Item1 - 1, temp.Item2] != 1)
+            if (temp.Item1 > 0 && maze[temp.Item1 - 1, temp.Item2] != 1)
                 stack.Push(new(temp.Item1 - 1, temp.Item2)); // лево
 
-            if (temp.Item1 + 1 < l.GetLength(0) && l[temp.Item1 + 1, temp.Item2] != 1)
+            if (temp.Item1 + 1 < maze.GetLength(0) && maze[temp.Item1 + 1, temp.Item2] != 1)
                 stack.Push(new(temp.Item1 + 1, temp.Item2)); // право
         }
 
@@ -85,8 +80,46 @@
 
     //    Сигнатура метода:
 
-    static int HasExit(int startI, int startJ, int[,] l)
+    public int HasCountExit(int startI, int startJ)
     {
-        return 0;
+        if (maze[startI, startJ] == 1)
+        {
+            Console.WriteLine("Начальная точка находится в стене!");
+            return 0;
+        }
+        else if (maze[startI, startJ] == 2)
+        {
+            Console.WriteLine("Выход находится на входе");
+            return 1;
+        }
+
+        var stack = new Stack<Tuple<int, int>>();
+        stack.Push(new(startI, startJ));
+        int count = 0;
+        while (stack.Count > 0)
+        {
+            var temp = stack.Pop();
+
+            if (maze[temp.Item1, temp.Item2] == 2)
+            {
+                count++;
+            }
+
+            maze[temp.Item1, temp.Item2] = 1;
+
+            if (temp.Item2 > 0 && maze[temp.Item1, temp.Item2 - 1] != 1)
+                stack.Push(new(temp.Item1, temp.Item2 - 1)); // вверх
+
+            if (temp.Item2 + 1 < maze.GetLength(1) && maze[temp.Item1, temp.Item2 + 1] != 1)
+                stack.Push(new(temp.Item1, temp.Item2 + 1)); // низ
+
+            if (temp.Item1 > 0 && maze[temp.Item1 - 1, temp.Item2] != 1)
+                stack.Push(new(temp.Item1 - 1, temp.Item2)); // лево
+
+            if (temp.Item1 + 1 < maze.GetLength(0) && maze[temp.Item1 + 1, temp.Item2] != 1)
+                stack.Push(new(temp.Item1 + 1, temp.Item2)); // право
+        }
+
+        return count;
     }
 }
