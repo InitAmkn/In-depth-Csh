@@ -8,7 +8,8 @@ namespace les3
     {
         public static void Main(string[] args)
         {
-           
+
+
             Maze maze = new Maze(new int[,]
             {
                 {1, 1, 1, 1, 1, 1, 1 },

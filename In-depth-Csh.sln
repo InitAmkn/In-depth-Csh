@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les2", "les2\les2.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les3", "les3\les3.csproj", "{51B084A8-3788-4E64-975A-6BB30910B59D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "les4", "les4\les4.csproj", "{937C17A9-D066-4E2E-8E41-7EDB2206AD22}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{51B084A8-3788-4E64-975A-6BB30910B59D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{51B084A8-3788-4E64-975A-6BB30910B59D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{51B084A8-3788-4E64-975A-6BB30910B59D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{937C17A9-D066-4E2E-8E41-7EDB2206AD22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{937C17A9-D066-4E2E-8E41-7EDB2206AD22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{937C17A9-D066-4E2E-8E41-7EDB2206AD22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{937C17A9-D066-4E2E-8E41-7EDB2206AD22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
