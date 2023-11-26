@@ -9,21 +9,20 @@ namespace les5
     internal class Terminal
     {
         Calc calc = new Calc();
-        private int numInput()
+        private double numInput()
         {
             Console.Write("Введите число: ");
             try
             {
-                return int.Parse(Console.ReadLine());
+                return new MyDoubleTryParser().TryParse(Console.ReadLine());
             }
             catch
             {
-                Console.WriteLine("число некорректно ");
                 return numInput();
             }
         }
 
-        private void operationInput(int inputNum)
+        private void operationInput(double inputNum)
         {
            
             Console.WriteLine("Выберите действие: \n" +
@@ -71,9 +70,15 @@ namespace les5
             //тех пор пока пользователь не нажмет отмена
             //или введёт пустую строку.
 
-            
+            //Доработайте класс калькулятора способным работать как с целочисленными так и с дробными числами.
+            //(возможно стоит задействовать перегрузку операций).
+
+            //заменить Convert.ToDouble на собственный DoubleTryPars и обрабатываем ошибку
+            //проверить что введенное число небыло отрицательное (вывести ошибку Exeption , отловить Catch)
+            //сумма не может быть отрицательной (при делении и вычитании)
+
             calc.MyEventHandler += Calc_MyEventHandler;
-            int inputNum = numInput();
+            double inputNum = numInput();
             calc.Sum(inputNum);
             while (true)
             {

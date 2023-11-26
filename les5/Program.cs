@@ -11,5 +11,5 @@ internal class Program
 
 
     }
-   
+
 }

@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace les5
 {
+
     internal class Calc : ICalc
     {
         public double Result { set; get; } = 0D;
@@ -17,12 +19,13 @@ namespace les5
             MyEventHandler?.Invoke(this, new EventArgs());
         }
        
-        public void Divide(int x)
+        public void Divide(double x)
         {
             if (x == 0)
             {
                 saveHistory(Result);
                 PrintResult();
+                throw new CalculatorDivideByZeroException();
                 return;
             }
             Result /= x;
@@ -30,21 +33,21 @@ namespace les5
             PrintResult();
         }
 
-        public void Multiply(int x)
+        public void Multiply(double x)
         {
             Result *= x;
             saveHistory(Result);
             PrintResult();
         }
 
-        public void Sub(int x)
+        public void Sub(double x)
         {
             Result -= x;
             saveHistory(Result);
             PrintResult();
         }
 
-        public void Sum(int x)
+        public void Sum(double x)
         {
             Result += x;
             saveHistory(Result);
