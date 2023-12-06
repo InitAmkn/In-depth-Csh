@@ -23,7 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web2", "web2\web2.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web2.1", "web2.1\web2.1.csproj", "{9CFB2BD8-898A-4297-931A-98473DD1A265}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "les8", "les8\les8.csproj", "{37267ABD-5A23-449D-9CC4-568784B3DF6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les8", "les8\les8.csproj", "{37267ABD-5A23-449D-9CC4-568784B3DF6E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web3", "web3\web3.csproj", "{62532A99-13B2-4C75-A767-79798CC35858}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "les9", "les9\les9.csproj", "{5351093F-5AEB-4453-B9AD-398645CF1928}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -75,6 +79,14 @@ Global
 		{37267ABD-5A23-449D-9CC4-568784B3DF6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37267ABD-5A23-449D-9CC4-568784B3DF6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37267ABD-5A23-449D-9CC4-568784B3DF6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62532A99-13B2-4C75-A767-79798CC35858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62532A99-13B2-4C75-A767-79798CC35858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62532A99-13B2-4C75-A767-79798CC35858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62532A99-13B2-4C75-A767-79798CC35858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5351093F-5AEB-4453-B9AD-398645CF1928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5351093F-5AEB-4453-B9AD-398645CF1928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5351093F-5AEB-4453-B9AD-398645CF1928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5351093F-5AEB-4453-B9AD-398645CF1928}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
