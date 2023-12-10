@@ -27,7 +27,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les8", "les8\les8.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web3", "web3\web3.csproj", "{62532A99-13B2-4C75-A767-79798CC35858}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "les9", "les9\les9.csproj", "{5351093F-5AEB-4453-B9AD-398645CF1928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "les9", "les9\les9.csproj", "{5351093F-5AEB-4453-B9AD-398645CF1928}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "web4", "web4\web4.csproj", "{187CD8C3-4220-4BA0-955D-986FCF4A6BF9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WEB 1", "WEB 1", "{EE9BFE5B-DF3C-44EB-B3D2-AA412B5838E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,9 +91,17 @@ Global
 		{5351093F-5AEB-4453-B9AD-398645CF1928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5351093F-5AEB-4453-B9AD-398645CF1928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5351093F-5AEB-4453-B9AD-398645CF1928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{187CD8C3-4220-4BA0-955D-986FCF4A6BF9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{187CD8C3-4220-4BA0-955D-986FCF4A6BF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{187CD8C3-4220-4BA0-955D-986FCF4A6BF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{187CD8C3-4220-4BA0-955D-986FCF4A6BF9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5B1C4586-D4A3-43CA-960E-51B95569C8F9} = {EE9BFE5B-DF3C-44EB-B3D2-AA412B5838E2}
+		{A491F79D-D48F-4FCC-8BAE-929AE3FC4396} = {EE9BFE5B-DF3C-44EB-B3D2-AA412B5838E2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FBE8D03E-E1A3-438B-99EE-D65C185FECB1}

@@ -11,14 +11,19 @@ namespace web1
     {
         public string Text { get; set; }
         public DateTime DateTime { get; set; }
-        public string NickNameFrom { get; set; }
-        public string NickNameTo { get; set; }
+        public string IdFrom { get; set; }
+        public string NicknameTo { get; set; }
+        public string AnswerОк = "Сообщение получено";
         public string SerializeMessageToJson() => JsonSerializer.Serialize(this);
-        public static Message? DeserializeMessageToJson(string message) => JsonSerializer.Deserialize<Message>(message);
-
+        public static Message? DeserializeFromJson(string message) => JsonSerializer.Deserialize<Message>(message);
+        public void Print()
+        {
+            Console.WriteLine(ToString());
+        }
         public override string ToString()
         {
-            return $"{DateTime}\n от кого: {NickNameFrom}\nкому:{NickNameTo}\nтекст:{Text}\n";
+            return $"{this.DateTime} получено сообщение {this.Text} от {this.IdFrom}";
         }
+
     }
 }

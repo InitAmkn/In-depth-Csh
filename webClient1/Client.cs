@@ -1,28 +1,28 @@
-﻿
-using System.Net.Sockets;
+﻿using web1;
 using System.Net;
+using System.Net.Sockets;
 using System.Text;
-using web1;
 
-namespace webClient1
+namespace WebClient
 {
-    internal class Program
+    internal class Client
     {
         static void Main(string[] args)
         {
-
-
-            SentMessage(args[0], args[1]);
+            
+            string myNick = "141";
+            string ip = "127.0.0.1";
+            SendMessage(myNick, ip);
+            
         }
 
 
-        public static void SentMessage(string From, string ip)
+        public static void SendMessage(string From, string ip)
         {
 
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 12345);
-
-
+            
             while (true)
             {
                 string messageText;
@@ -35,13 +35,20 @@ namespace webClient1
                 }
                 while (string.IsNullOrEmpty(messageText));
 
-                Message message = new Message() { Text = messageText, NickNameFrom = From, NickNameTo = "Server", DateTime = DateTime.Now };
+                Message message = new Message() { 
+                    Text = messageText, 
+                    IdFrom = From, 
+                    NicknameTo = "Server", 
+                    DateTime = DateTime.Now };
+
                 string json = message.SerializeMessageToJson();
 
                 byte[] data = Encoding.UTF8.GetBytes(json);
                 udpClient.Send(data, data.Length, iPEndPoint);
+         
             }
 
         }
+     
     }
 }
