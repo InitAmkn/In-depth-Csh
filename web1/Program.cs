@@ -35,6 +35,20 @@ namespace web1
                 Message message = Message.DeserializeFromJson(messageText);
                 message.Print();
 
+                Message message1 = new Message()
+                {
+                    Text = Message.AnswerОк,
+                    IdFrom = "Server",
+                    NicknameTo = message.IdFrom,
+                    DateTime = DateTime.Now
+                };
+                string json1 = message1.SerializeMessageToJson();
+
+                UdpClient udpClient1 = new UdpClient(0);
+                IPEndPoint iPEndPoint1 = new IPEndPoint(IPAddress.Parse(message.IdFrom), 0);
+                byte[] data = Encoding.UTF8.GetBytes(json1);
+                udpClient1.Send(data, data.Length, iPEndPoint1);
+
             }
         }
 

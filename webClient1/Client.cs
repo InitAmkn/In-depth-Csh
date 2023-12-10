@@ -9,8 +9,10 @@ namespace WebClient
     {
         static void Main(string[] args)
         {
-            
-            string myNick = "141";
+            string host = Dns.GetHostName();
+            IPAddress address = Dns.GetHostAddresses(host).First<IPAddress>(f => f.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork);
+            string myNick = address.ToString();
+           
             string ip = "127.0.0.1";
             SendMessage(myNick, ip);
             
@@ -22,13 +24,13 @@ namespace WebClient
 
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 12345);
-            
             while (true)
             {
                 string messageText;
                 do
                 {
                     Console.Clear();
+                    Console.WriteLine(From);
                     Console.WriteLine("Введите сообщение.");
                     messageText = Console.ReadLine();
 
@@ -45,10 +47,24 @@ namespace WebClient
 
                 byte[] data = Encoding.UTF8.GetBytes(json);
                 udpClient.Send(data, data.Length, iPEndPoint);
-         
+                while (true)
+                {
+                    Console.WriteLine();
+
+                    byte[] buffer = udpClient.Receive(ref iPEndPoint);
+
+                    if (buffer == null) break;
+                    var messageText1 = Encoding.UTF8.GetString(buffer);
+
+                    Message message1 = Message.DeserializeFromJson(messageText);
+                    message1.Print();
+
+                }
             }
 
         }
-     
+       
+
+
     }
 }

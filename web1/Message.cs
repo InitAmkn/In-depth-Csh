@@ -13,7 +13,7 @@ namespace web1
         public DateTime DateTime { get; set; }
         public string IdFrom { get; set; }
         public string NicknameTo { get; set; }
-        public string AnswerОк = "Сообщение получено";
+        public static string AnswerОк = "Сообщение получено";
         public string SerializeMessageToJson() => JsonSerializer.Serialize(this);
         public static Message? DeserializeFromJson(string message) => JsonSerializer.Deserialize<Message>(message);
         public void Print()
