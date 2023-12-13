@@ -22,6 +22,7 @@ namespace WebClient
         public static void SendMessage(string From, string ip)
         {
 
+
             UdpClient udpClient = new UdpClient();
             IPEndPoint iPEndPoint = new IPEndPoint(IPAddress.Parse(ip), 12345);
             while (true)
@@ -33,7 +34,7 @@ namespace WebClient
                     Console.WriteLine(From);
                     Console.WriteLine("Введите сообщение.");
                     messageText = Console.ReadLine();
-
+                    if (messageText?.ToLower() == "exit") return;
                 }
                 while (string.IsNullOrEmpty(messageText));
 
